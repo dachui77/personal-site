@@ -26,7 +26,7 @@ async function initDB(env) {
   const count = await env.DB.prepare('SELECT COUNT(*) as c FROM posts').first();
   if (count.c === 0) {
     await env.DB.prepare("INSERT INTO posts (title, slug, content, category) VALUES (?, ?, ?, ?)")
-      .bind('欢迎来到我的博客', 'welcome', '这是我的第一篇博客文章！\n\n这个个人网站完全运行在 Cloudflare 边缘网络上，使用 Workers 作为后端、D1 作为数据库、KV 存储留言。\n\n无需服务器、无需备案，全球加速访问。', 'general').run();
+      .bind('欢迎来到博雅斋', 'welcome', '这是我的第一篇博客文章！\n\n这个个人网站完全运行在 Cloudflare 边缘网络上，使用 Workers 作为后端、D1 作为数据库、KV 存储留言。\n\n无需服务器、无需备案，全球加速访问。', 'general').run();
     await env.DB.prepare("INSERT INTO posts (title, slug, content, category) VALUES (?, ?, ?, ?)")
       .bind('Cloudflare 全栈开发指南', 'cloudflare-guide', 'Cloudflare Workers 是一个无服务器平台，可以在全球 300+ 数据中心运行代码。\n\n结合 D1 数据库和 KV 存储，你可以构建完整的全栈应用。\n\n关键优势：\n- 全球边缘部署\n- 自动扩缩容\n- 免费额度充足\n- 无需管理服务器', 'study').run();
     await env.DB.prepare("INSERT INTO posts (title, slug, content, category) VALUES (?, ?, ?, ?)")
